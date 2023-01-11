@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  email      String
+  hash       String
+  firstName  String?
+  lastName   String?
+  middleName String?
+}
+
+model Bookmark {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String?
+  link        String
+}
+
+// model Wallet {
+//   id Int @id @default(autoincrement())
+//   walletId String 
+//   coinType String
+//   rootAddress String
+//   parentChain String
+//   walletType String
+//   isActive
+//   provider
+//   rateProvider
+//   useForRates
+//   isFees
+//   isAutoRefill
+//   isUTXObase
+//   decimalPlaces
+//   displayName
+//   notes
+//   mainDbWalletId
+//   storageType
+//   isHotDisplay
+//   timestamp
+// }
